@@ -1,0 +1,9 @@
+  =>  Run server    : pip install -r .\Test\requirements.txt
+
+  =>  Run server    : python .\Test\manage.py runserver
+  
+  =>  URL WEBSITE   : http://127.0.0.1:8000/home/News
+
+
+
+

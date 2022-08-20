@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0" style="margin-bottom: 10px;">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="/home/News" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Jhon<span
+                        class="text-white font-weight-normal">News</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-5 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="/home/News" class="nav-item nav-link active">Jhon NEWS</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Filtro</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            {% for datalist in list %}
+                            <a href="/home/{{datalist}}" class="dropdown-item">{{datalist}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- <select name="si" id="selectBox" onchange="lisen();"> -->
+    <!-- <select id="selectBox" onchange="changeFunc();">
+
+        <option value="">uno </option>
+
+    </select>
+
+    <select onChange="myFunction(this.options[this.selectedIndex].value)">
+        {% for datalist in list %}
+        <option value="{{datalist}}">{{datalist}}</option>
+        {% endfor %}
+
+    </select> -->
+
+
+    {% for dato in datos %}
+    <div class="container-fluid mb-3">
+        <div class="container">
+            <div class="position-relative overflow-hidden" style="height: 300px;">
+                <img class="img-fluid h-100" src="{{dato.urlToImage}}" style="object-fit: cover;">
+                <div class="overlay">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                            href="{{dato.url }}">{{dato.source.name}}</a>
+                        <a class="text-white" href=""><small>{{dato.publishedAt}}</small></a>
+                    </div>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{dato.source.id|default_if_none:"News" }}</a>
+                    <small>{{dato.content}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111; bottom: 0;">
+        <p class="m-0 text-center">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.
+
+            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+            Design by <a href="https://htmlcodex.com">HTML Codex</a>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'lib/easing/easing.min.js'%}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+
+</body>
+
+</html>
